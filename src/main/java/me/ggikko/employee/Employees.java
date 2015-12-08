@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Park Ji Hong, ggikko.
@@ -35,7 +36,7 @@ public class Employees {
     @JoinColumn(name="emp_no")
     private DepartmentEmployee departmentEmployee;
 
-    @OneToMany(mappedBy = "empno")
+    @OneToMany(targetEntity = me.ggikko.employee.Salaries.class, mappedBy = "emp_no", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Salaries> salaries;
 
 //    @Id
